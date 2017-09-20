@@ -150,8 +150,20 @@ public class A1Q1to7 {
     
     //Question 7
     public boolean Palindrome(String s, int length) {
-        
-        
+        //create an integer to be the corresponding postion at the front to length at the end
+        int frontPosition = 0;
+        //check to see if position n from the front is equal to position n from the back
+        if (s.substring(frontPosition, frontPosition + 1) == s.substring(length, length - 1)){
+            //adjust these checking positions for the next 2 positions ex: position 2 and 5
+            length = length - 1;
+            //THIS DOESNT WORK 
+            frontPosition = frontPosition + 1;
+            //call the method for a pair o close to the center
+            Palindrome(s, length);
+            
+        } else if (s.substring(frontPosition, frontPosition + 1) != s.substring(length, length - 1)){
+            return false;
+        } else if
     }
 
     /**
