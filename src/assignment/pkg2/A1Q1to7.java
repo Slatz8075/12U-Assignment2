@@ -147,23 +147,30 @@ public class A1Q1to7 {
         //return the string up a level or to the user
         return convertOutput;
     }
-    
+
     //Question 7
     public boolean Palindrome(String s, int length) {
-        //create an integer to be the corresponding postion at the front to length at the end
-        int frontPosition = 0;
-        //check to see if position n from the front is equal to position n from the back
-        if (s.substring(frontPosition, frontPosition + 1) == s.substring(length, length - 1)){
-            //adjust these checking positions for the next 2 positions ex: position 2 and 5
-            length = length - 1;
-            //THIS DOESNT WORK 
-            frontPosition = frontPosition + 1;
-            //call the method for a pair o close to the center
-            Palindrome(s, length);
-            
-        } else if (s.substring(frontPosition, frontPosition + 1) != s.substring(length, length - 1)){
+        //check to see if the front position is equal to position in the back
+        if ((length != 1 && length != 2) && s.charAt(0) == s.charAt(length - 1)) {
+            //these two positions are the same therefore delete them in order to check the next ones
+            s = s.substring(1, length - 1);
+            //since the string length become 2 letters shorter adjust the length
+            length = length - 2;
+            //call the method for the new first and last letters
+            return Palindrome(s, length);
+            //if not check to see if the length is just 1 long
+        }else if (length == 1){
+            //it is so, so return that this is the last most center character (equal to itself)
+            return true;
+            //check to see if the 2 most center digits are equal to each other
+        }else if ((length == 2) && (s.charAt(0) == s.charAt(length - 1))){
+            //it is so return true
+            return true;
+            //is all of these conditions have not triggered we know that it is not a palindrome
+        }else{
+            //it is so, so return false
             return false;
-        } else if
+        }
     }
 
     /**
@@ -184,7 +191,7 @@ public class A1Q1to7 {
         System.out.println("The Binary Convert of 156 is : " + bound5);
         String bound6 = test.convert(1000, 16);
         System.out.println("1000 in base 16 is : " + bound6);
-        boolean bound7 = test.convert(racecar, 7);
+        boolean bound7 = test.Palindrome("racecar", 7);
         System.out.println("racecar is a palindrome : " + bound7);
 
 
